@@ -31,9 +31,11 @@
 <body>
 
   <section class="sec-1">
-    IP Address Tracker
 
-    <form action="" id="form">
+    <form action="" id="form" class="form mx-auto pt-4">
+
+      <h2 class="pb-3">IP Address Tracker</h2>
+
       <div>
         <input type="text" placeholder="Search for any IP address or domain" id="ip">
         <button type="submit" class="border-0" id="InputBTN"><img src="images/icon-arrow.svg" alt="search arrow button"></button>
@@ -43,15 +45,28 @@
 
   <section class="sec-2">
 
-    <div id="display">
-      IP Address
-      Location
-      Timezone
-      UTC <!-- add offset value dynamically using the API -->
-      ISP
+    <div class="bar mx-auto rounded-4 p-3" id="display">
+      <div>
+        <h6 class="text-center">IP Address</h6>
+        <P class="text-center fw-bolder h3" id="ipDisplay"></P>
+      </div>
+      <div>
+        <h6 class="text-center">Location</h6>
+        <P class="text-center fw-bolder h3" id="locationDisplay"></P>
+      </div>
+      <div>
+        <h6 class="text-center">Timezone</h6>
+        <P class="text-center fw-bolder h3" id="timeDisplay"></P>
+      </div>
+      <div>
+        <h6 class="text-center">ISP</h6>
+        <P class="text-center fw-bolder h3" id="ispDisplay"></P>
+      </div>
+       <!-- add offset value dynamically using the API -->
+      
     </div>
 
-    <div>
+    <div class="map">
       <!-- background type shii -->
 
     </div>

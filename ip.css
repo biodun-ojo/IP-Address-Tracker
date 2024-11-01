@@ -4,4 +4,16 @@
   background-repeat: no-repeat;
   background-position: center;
   height: 200px;
+}
+.sec-1 .form {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.bar {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: aliceblue;
 }/*# sourceMappingURL=ip.css.map */

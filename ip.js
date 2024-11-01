@@ -4,62 +4,11 @@ const form = document.getElementById('form')
 const adderss = document.getElementById('ip')
 const button = document.getElementById('InputBTN')
 const diplay = document.getElementById('display')
+const ipDisplay = document.getElementById('ipDisplay')
+const locationDisplay = document.getElementById('locationDisplay')
+const timeDisplay = document.getElementById('timeDisplay')
+const ispDisplay = document.getElementById('ispDisplay')
 
-
-/*
-async function name(params) {
-    
-}
-
-const key = 'at_qMkipuXcRjSIWco8laFzkGXrAYAtX';
-
-form.addEventListener('submit', async event => {
-    event.preventDefault()
-
-    const thething = adderss.value
-
-    if (thething) {
-        try {
-            const weatherData = await getWeatherData(thething)
-            //displayWeatherInfo(weatherData)
-        }
-        catch (error) {
-            console.error(error)
-            //displayError(error)
-        }
-
-    }
-    else {
-        displayError('please enter a city')
-    }
-
-    console.log(getWeatherData(thething))
-})
-
-async function getWeatherData(adderss) {
-    const apiUrl = `https://geo.ipify.org/api/v2/country?apiKey=at_qMkipuXcRjSIWco8laFzkGXrAYAtX&ipAddress=${adderss}`
-
-    const response = await fetch(apiUrl)
-
-    if (!response.ok) {
-        throw new Error('could not fethc ip address')
-    }
-
-    return await response.json()
-}
-
-let data;
-
-function get(data) {
-    const {
-        ip,
-        isp,
-        location: {country, region, timezone}
-    } = data
-
-    console.log(data)
-}
-*/
 
 async function getIPAddress(IP) {
     const apiUrl = `https://geo.ipify.org/api/v2/country?apiKey=at_qMkipuXcRjSIWco8laFzkGXrAYAtX&ipAddress=${IP}`
@@ -95,6 +44,12 @@ function destructure(info) {
     console.log(country);   // 'US'
     console.log(region);    // 'Virginia'
     console.log(timezone);
+
+    ipDisplay.textContent = ip
+    locationDisplay.textContent = `${region}, ${country} ${asn}`
+    timeDisplay.textContent = `UTC${timezone}`
+    ispDisplay.textContent = isp
+    
 }
 
 form.addEventListener('submit', async event => {
