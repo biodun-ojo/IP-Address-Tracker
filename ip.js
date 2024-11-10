@@ -24,7 +24,7 @@ async function getIPAddress(IP) {
 
 function destructure(info) {
     const {
-        as: { asn, name, route, domain, type},
+        as: { asn, name, route, domain, type },
         domains,
         ip,
         isp,
@@ -49,7 +49,7 @@ function destructure(info) {
     locationDisplay.textContent = `${region}, ${country} ${asn}`
     timeDisplay.textContent = `UTC${timezone}`
     ispDisplay.textContent = isp
-    
+
 }
 
 form.addEventListener('submit', async event => {
@@ -73,6 +73,22 @@ form.addEventListener('submit', async event => {
         console.log('error')
     }
 })
+
+//map code, yeah mehn
+
+function diplayMap() {
+    let map = L.map('map').setView([7.3775, 3.9470], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    const marker = L.marker([7.3775, 3.9470]).addTo(map);
+    marker.bindPopup("<b>Hello!</b><br>This is a popup.").openPopup();
+}
+
+diplayMap()
 
 /*
 const url = `https://geo.ipify.org/api/v2/country?apiKey=at_qMkipuXcRjSIWco8laFzkGXrAYAtX&ipAddress=${themain}`
