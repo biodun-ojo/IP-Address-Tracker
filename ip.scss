@@ -11,15 +11,32 @@ body {
 
     .form {
         width: fit-content;
+
+        h2 {
+            color: white;
+        }
+
+        div {
+            background-color: white;
+            width: fit-content;
+
+            button {
+                background-color: hsl(0, 0%, 17%);
+            }
+        }
     }
 }
 
 .bar {
     width: fit-content;
-    background-color: aliceblue;
+    background-color: white;
+    position: absolute;
+    top: 150px;
+    z-index: 4;
 }
 
 #map {
-    height: 500px; 
+    height: 700px; 
     width: 100%;
+    z-index: 1;
 }

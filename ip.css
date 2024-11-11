@@ -14,15 +14,31 @@ body {
   width: -moz-fit-content;
   width: fit-content;
 }
+.sec-1 .form h2 {
+  color: white;
+}
+.sec-1 .form div {
+  background-color: white;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.sec-1 .form div button {
+  background-color: hsl(0, 0%, 17%);
+}
 
 .bar {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  background-color: aliceblue;
+  background-color: white;
+  position: absolute;
+  top: 150px;
+  z-index: 4;
 }
 
 #map {
-  height: 500px;
+  height: 700px;
   width: 100%;
+  z-index: 1;
 }/*# sourceMappingURL=ip.css.map */

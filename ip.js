@@ -47,34 +47,35 @@ function destructure(info) {
 
     ipDisplay.textContent = ip
     locationDisplay.textContent = `${region}, ${country} ${asn}`
-    timeDisplay.textContent = `UTC${timezone}`
+    timeDisplay.textContent = `UTC ${timezone}`
     ispDisplay.textContent = isp
 
 }
 
-form.addEventListener('submit', async event => {
-    event.preventDefault()
-
-    let themain = adderss.value;
-
-    if (themain) {
-        try {
-            const IPAddressData = await getIPAddress(themain)
-            console.log(IPAddressData)
-            destructure(IPAddressData)
-        }
-        catch (error) {
-            console.error(error)
-            //displayError(error)
-        }
-    }
-    else {
-        //displayError('please enter a city')
-        console.log('error')
-    }
-})
-
 //map code, yeah mehn
+
+async function ipToLongAndLatConverter(ip) {
+    const apiLink = `https://api.ip2location.io/?key=4C7518D3EE62F878B6E1120B51A9B0BA&ip=${ip}`
+
+    const responze = await fetch(apiLink)
+
+    if (!responze.ok) {
+        throw new Error('could not fethc IP data')
+        //console.log('could not fethc IP data')
+    }
+
+    return await responze.json();
+}
+
+function IpDestructure(info) {
+    const {
+        latitude,
+        longitude,
+    } = info;
+
+    console.log(latitude);       // 14618
+    console.log(longitude);
+}
 
 function diplayMap() {
     let map = L.map('map').setView([7.3775, 3.9470], 13);
@@ -90,7 +91,38 @@ function diplayMap() {
 
 diplayMap()
 
+
+form.addEventListener('submit', async event => {
+    event.preventDefault()
+
+    let themain = adderss.value;
+
+    if (themain) {
+        try {
+            const IPAddressData = await getIPAddress(themain)
+            console.log(IPAddressData)
+            destructure(IPAddressData)
+            const convert = await ipToLongAndLatConverter(themain)
+            console.log(convert)
+            IpDestructure(convert)
+        }
+        catch (error) {
+            console.error(error)
+            //displayError(error)
+        }
+    }
+    else {
+        //displayError('please enter a city')
+        console.log('error')
+    }
+})
+
+
 /*
+fetch('https://api.ip2location.io/?key=4C7518D3EE62F878B6E1120B51A9B0BA&ip=8.8.8.8', {
+    mode: 'no-cors'
+  })
+
 const url = `https://geo.ipify.org/api/v2/country?apiKey=at_qMkipuXcRjSIWco8laFzkGXrAYAtX&ipAddress=${themain}`
 
 fetch(url)
