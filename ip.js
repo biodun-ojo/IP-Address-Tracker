@@ -107,7 +107,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 let marker = L.marker([7.3775, 3.9470]).addTo(map);
-marker.bindPopup("<b>Hello!</b><br>This is a popup.").openPopup();
+marker.bindPopup("<b>YOUR<br>LOCATION</b>").openPopup();
 
 
 function updateMap(latitude, longitude) {
