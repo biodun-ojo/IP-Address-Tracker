@@ -18,10 +18,31 @@ body {
 
         div {
             background-color: white;
-            width: fit-content;
+            height: 50px;
+            border-radius: 10px 10px 10px 10px;
+
+            input {
+                width: 250px;
+                border-radius: 10px 0 0 10px;
+
+                &:focus {
+                    outline: none;
+                }
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
 
             button {
                 background-color: hsl(0, 0%, 17%);
+                border-radius: 0 10px 10px 0;
+                width: 50px;
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
     }
@@ -33,10 +54,44 @@ body {
     position: absolute;
     top: 150px;
     z-index: 4;
+
+    h6 {
+        color: hsl(0, 0%, 59%);
+        font-size: 12PX;
+    }
 }
 
 #map {
     height: 700px; 
     width: 100%;
     z-index: 1;
+}
+
+@media (min-width: 990px) {
+    .form {
+        div {
+            input {
+                width: 350px !important;
+            }
+        }
+    }
+
+    .bar {
+        div{
+            width: 230px;
+            border-right: 1px solid hsl(0, 0%, 59%);
+
+            h6 {
+                text-align: left !important;
+            }
+
+            p {
+                text-align: left !important;
+            }
+
+            &:nth-child(4) {
+                border: none;
+            }
+        }
+    }
 }
