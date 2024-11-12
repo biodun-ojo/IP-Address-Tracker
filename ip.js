@@ -55,7 +55,7 @@ function destructure(info) {
 //map code, yeah mehn
 
 async function ipToLongAndLatConverter(ip) {
-    const apiLink = `https://api.ip2location.io/?key=4C7518D3EE62F878B6E1120B51A9B0BA&ip=${ip}`
+    const apiLink = `https://api.ipgeolocation.io/ipgeo?apiKey=faefd4c1ebc64901a0867a5ce7cb436c&ip=${ip}`
 
     const responze = await fetch(apiLink)
 
@@ -67,16 +67,23 @@ async function ipToLongAndLatConverter(ip) {
     return await responze.json();
 }
 
+let long;
+let lati;
+
 function IpDestructure(info) {
     const {
         latitude,
         longitude,
     } = info;
 
+    long = longitude
+    lati = latitude
+
     console.log(latitude);       // 14618
     console.log(longitude);
 }
 
+/*
 function diplayMap() {
     let map = L.map('map').setView([7.3775, 3.9470], 13);
 
@@ -90,6 +97,23 @@ function diplayMap() {
 }
 
 diplayMap()
+*/
+
+let map = L.map('map').setView([7.3775, 3.9470], 13);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+let marker = L.marker([7.3775, 3.9470]).addTo(map);
+marker.bindPopup("<b>Hello!</b><br>This is a popup.").openPopup();
+
+
+function updateMap(latitude, longitude) {
+    map.setView([latitude, longitude], 13);
+    marker = L.marker([latitude, longitude]).addTo(map);
+}
 
 
 form.addEventListener('submit', async event => {
@@ -105,6 +129,7 @@ form.addEventListener('submit', async event => {
             const convert = await ipToLongAndLatConverter(themain)
             console.log(convert)
             IpDestructure(convert)
+            updateMap(lati, long)
         }
         catch (error) {
             console.error(error)
