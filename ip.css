@@ -62,6 +62,9 @@ body {
 }
 
 @media (min-width: 990px) {
+  .sec-1 {
+    background-image: url(images/pattern-bg-desktop.png);
+  }
   .form div input {
     width: 350px !important;
   }
